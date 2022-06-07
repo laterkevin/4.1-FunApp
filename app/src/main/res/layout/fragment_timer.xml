@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.TimerFragment"
+        android:background="@color/SI_DeepPurple">
+
+        <TableRow
+            android:id="@+id/row_1"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp">
+
+
+            <EditText
+                android:id="@+id/seconds_input"
+                android:layout_weight="1"
+                android:maxLength="2"
+                android:hint="00"
+                android:textAlignment="center"
+                android:inputType="number"
+                android:textColor="@color/SI_Grey"
+                android:textColorHint="@color/SI_Yellow"/>
+
+
+        </TableRow>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/row_2"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/row_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.35">
+
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="230dp"
+                android:layout_height="200dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/timebomb" />
+
+
+
+            <TextView
+                android:id="@+id/seconds_tv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="00"
+                android:inputType="number"
+                android:maxLength="2"
+                android:textAlignment="center"
+                android:textColor="@color/SI_Grey"
+                android:textColorHint="@color/SI_Yellow"
+                android:textSize="45dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/timer_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@android:drawable/ic_media_play"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/row_2"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <Button
+            android:id="@+id/cut_red_wire_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CUT RED"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/timer_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/row_2" />
+
+        <Button
+            android:id="@+id/cut_blue_wire_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CUT BLUE"
+            android:backgroundTint="@android:color/holo_blue_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/timer_button"
+            app:layout_constraintTop_toBottomOf="@+id/row_2" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/reset_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:enabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timer_button"
+            app:srcCompat="@android:drawable/ic_menu_rotate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
