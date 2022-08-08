@@ -1,8 +1,10 @@
 package com.example.a41_funapp.ui
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.* // ktlint-disable no-wildcard-imports
 import java.lang.NumberFormatException
 import java.util.concurrent.TimeUnit
@@ -12,9 +14,11 @@ class TimerFragmentViewModel() : ViewModel() {
 
     // TODO
     //  erstelle eine Varbiable namens currentJob
+    lateinit var currentJob: Job
 
     // TODO
-    //  erstelle eine Variable delay
+    //  erstelle eine Variable delayTime
+    var delayTime: Long = 1000
 
     private var _stringTime = MutableLiveData<String>("")
     val stringTime: LiveData<String>
@@ -30,14 +34,28 @@ class TimerFragmentViewModel() : ViewModel() {
 
     fun countDownTime(timeString: String) {
         // TODO
+        _stringTime.value = timeString
+        convertTimeToMillis(timeString)
+        _countDownInitiated = true
+        currentJob = viewModelScope.launch(Dispatchers.Main) {
+            while (timeInMillis > 0) {
+                delay(delayTime)
+                timeInMillis -= 1000
+                convertTimeToString(timeInMillis)
+            }
+            _countDownActive.value = false
+            delayTime = 1000
+        }
     }
 
     fun stopCurrentJob() {
         // TODO
+        currentJob.cancel()
     }
 
     fun fastRunCurrentJob() {
         // TODO
+        delayTime = 10
     }
 
     private fun convertTimeToString(millis: Long) {
