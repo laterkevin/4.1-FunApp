@@ -11,6 +11,10 @@ class TimerFragmentViewModel() : ViewModel() {
     private var timeInMillis: Long = 1L
 
     // TODO
+    //  erstelle eine Varbiable namens currentJob
+
+    // TODO
+    //  erstelle eine Variable delay
 
     private var _stringTime = MutableLiveData<String>("")
     val stringTime: LiveData<String>
